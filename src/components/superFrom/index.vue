@@ -2,10 +2,12 @@
     <div class="index-container">
         <div >
         </div>
-        <a-form>
+        <a-form
+            :model="modelValue"
+        >
             <a-form-item
                 :label="item.label"
-                v-for="item in config" 
+                v-for="item in config.columns" 
                 :key="item.label"
                 :name="item.prop"
             >
@@ -19,12 +21,25 @@
                     :value="modelValue[item.prop]" 
                     @input="handleModel($event.target.value, item.prop)"
                 >
-                    <a-radio value="1">Sponsor</a-radio>
-                    <a-radio value="2">Venue</a-radio>
+                    <a-radio v-for="option in item.options" :key="option.value"  :value="option.value">{{option.label}}</a-radio>
                 </a-radio-group>
+                <a-select
+                    v-if="item.type === 'select'"  
+                    :value="modelValue[item.prop]" 
+                    @select="handleModel($event, item.prop)"
+                >
+                    <a-select-option v-for="option in item.options" :key="option.value"  :value="option.value">{{option.label}}</a-select-option>
+                </a-select>
+                <a-switch 
+                    v-if="item.type === 'switch'"
+                    :checked="modelValue[item.prop]" 
+                    @change="handleModel($event, item.prop)"
+                />
+            </a-form-item>
+            <a-form-item>
+                <a-button type="primary" @click="config.searchFn()" html-type="submit">提交</a-button>
             </a-form-item>
         </a-form>
-        {{modelValue}}
     </div>
 </template>
 <script setup lang="ts">
@@ -34,9 +49,9 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['update:modelValue'])
 
-const handleModel = (id, arr) => {
+const handleModel = (val, arr) => {
     // eslint-disable-next-line vue/no-mutating-props
-    props.modelValue[arr] = id
+    props.modelValue[arr] = val
     emit('update:modelValue', props.modelValue)
 }
 </script>
