@@ -21,8 +21,10 @@ const formData = ref({
     name1: 12345,
     name2: 1234,
     name3: '1',
-    name4: '1',
-    name5: true,
+    name4: ['1', '2'],
+    name5: '1',
+    name6: true,
+    name7: 5,
 })
 
 const config = reactive( {
@@ -30,8 +32,10 @@ const config = reactive( {
         {type: 'input', label: '输入框1', prop: 'name1'},
         {type: 'input', label: '输入框2', prop: 'name2'},
         {type: 'radio', label: '输入框3', prop: 'name3', options: [{ value: '1', label: '选项一'}, { value: '2', label: '选项二'}]},
-        {type: 'select', label: '输入框4', prop: 'name4', options: [{ value: '1', label: '选项一'}, { value: '2', label: '选项二'}]},
-        {type: 'switch', label: '输入框5', prop: 'name5'},
+        {type: 'checkbox', label: '输入框4', prop: 'name4', options: [{ value: '1', label: '选项一'}, { value: '2', label: '选项二'}]},
+        {type: 'select', label: '输入框5', prop: 'name5', options: [{ value: '1', label: '选项一'}, { value: '2', label: '选项二'}]},
+        {type: 'switch', label: '输入框6', prop: 'name6'},
+        {type: 'inputNumber', label: '输入框7', prop: 'name7', max: 12, min: 2},
     ],
     searchFn: () => {
         console.log(formData.value)

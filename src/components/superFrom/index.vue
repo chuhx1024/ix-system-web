@@ -4,6 +4,8 @@
         </div>
         <a-form
             :model="modelValue"
+            :label-col="{ span: 6 }"
+            :wrapper-col="{ span: 12 }"
         >
             <a-form-item
                 :label="item.label"
@@ -23,6 +25,18 @@
                 >
                     <a-radio v-for="option in item.options" :key="option.value"  :value="option.value">{{option.label}}</a-radio>
                 </a-radio-group>
+
+                <a-checkbox-group 
+                    v-if="item.type === 'checkbox'" 
+                    :value="modelValue[item.prop]" 
+                    @input="handleCheckbox($event.target.value, item.prop)"
+                >
+                    <a-row>
+                        <a-col :span="8">
+                            <a-checkbox v-for="option in item.options" :key="option.value"  :value="option.value">{{option.label}}</a-checkbox>
+                        </a-col>
+                    </a-row>
+                </a-checkbox-group>
                 <a-select
                     v-if="item.type === 'select'"  
                     :value="modelValue[item.prop]" 
@@ -35,8 +49,15 @@
                     :checked="modelValue[item.prop]" 
                     @change="handleModel($event, item.prop)"
                 />
+                <a-input-number 
+                    v-if="item.type === 'inputNumber'"
+                    :value="modelValue[item.prop]"
+                    @change="handleModel($event, item.prop)"
+                    :min="item.min" 
+                    :max="item.max" 
+                />
             </a-form-item>
-            <a-form-item>
+            <a-form-item :wrapper-col="{ span: 14, offset: 6 }">
                 <a-button type="primary" @click="config.searchFn()" html-type="submit">提交</a-button>
             </a-form-item>
         </a-form>
@@ -50,8 +71,15 @@ const props = defineProps<{
 const emit = defineEmits(['update:modelValue'])
 
 const handleModel = (val, arr) => {
-    // eslint-disable-next-line vue/no-mutating-props
     props.modelValue[arr] = val
+    emit('update:modelValue', props.modelValue)
+}
+const handleCheckbox = (val, arr) => {
+    if (props.modelValue[arr].includes(val)) {
+        props.modelValue[arr] = props.modelValue[arr].filter(item => item !== val)
+    } else {
+        props.modelValue[arr].push(val)
+    }
     emit('update:modelValue', props.modelValue)
 }
 </script>
