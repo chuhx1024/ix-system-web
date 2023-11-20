@@ -56,6 +56,7 @@
                     :min="item.min" 
                     :max="item.max" 
                 />
+                
             </a-form-item>
             <a-form-item :wrapper-col="{ span: 14, offset: 6 }">
                 <a-button type="primary" @click="config.searchFn()" html-type="submit">提交</a-button>
