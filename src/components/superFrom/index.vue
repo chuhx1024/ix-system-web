@@ -70,6 +70,17 @@
                     </div>
                 </div>
 
+                <a-slider 
+                    v-if="item.type === 'slider'"
+                    :value="modelValue[item.prop]"
+                    @change="handleModel($event, item.prop)"
+                />
+                <a-rate 
+                    v-if="item.type === 'rate'"
+                    :value="modelValue[item.prop]"
+                    @change="handleModel($event, item.prop)"
+                />
+
             </a-form-item>
             <a-form-item :wrapper-col="{ span: 14, offset: 6 }">
                 <a-button type="primary" @click="config.searchFn()" html-type="submit">提交</a-button>
