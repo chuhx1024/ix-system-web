@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import SuperFrom from './components/superFrom/index.vue'
+import SuperFrom from './components/xiFrom/index.vue'
 import { ref, reactive} from 'vue'
 const formData = ref({
     name1: 1234,
@@ -60,3 +60,4 @@ const config = reactive( {
 
 </script>
 
+./components/xiFrom/index.vue
