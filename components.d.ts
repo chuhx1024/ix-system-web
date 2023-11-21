@@ -49,6 +49,7 @@ declare module 'vue' {
     XiRadio: typeof import('./src/components/superFrom/components/XiRadio.vue')['default']
     XiSelect: typeof import('./src/components/superFrom/components/XiSelect.vue')['default']
     Xislider: typeof import('./src/components/superFrom/components/Xislider.vue')['default']
+    XiSlider: typeof import('./src/components/superFrom/components/XiSlider.vue')['default']
     XiSwitch: typeof import('./src/components/superFrom/components/XiSwitch.vue')['default']
     XiTextarea: typeof import('./src/components/superFrom/components/XiTextarea.vue')['default']
     XRadio: typeof import('./src/components/superFrom/components/xRadio.vue')['default']

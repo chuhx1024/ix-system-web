@@ -5,6 +5,7 @@
         <super-from
             v-model=formData
             :config="config"
+            :rules="rules"
         >
         </super-from>
     </div>
@@ -18,7 +19,7 @@
 import SuperFrom from './components/superFrom/index.vue'
 import { ref, reactive} from 'vue'
 const formData = ref({
-    name1: 12345,
+    name1: 1234,
     name2: 1234,
     name3: '1',
     name4: ['1', '2'],
@@ -29,6 +30,14 @@ const formData = ref({
     name9: 5,
     // name10: 5,
 })
+const rules: Record<string, Rule[]> = {
+    name1: [
+        { required: true, message: 'name1不能为空', trigger: 'change' },
+        { min: 3, max: 9, message: '长度为 3 to 9', trigger: 'blur' },
+    ],
+    name2: [{ required: true, message: 'name2不能为空', trigger: 'change' }],
+    name3: [{ required: true, message: 'name2不能为空', trigger: 'change' }],
+};
 
 const config = reactive( {
     columns: [
@@ -48,9 +57,6 @@ const config = reactive( {
     },
 })
 
+
 </script>
 
-<style scoped>
-
-
-</style>

@@ -1,11 +1,11 @@
 <template>
     <div class="index-container">
-        <div >
-        </div>
         <a-form
             :model="modelValue"
+            :rules="rules"
             :label-col="{ span: 6 }"
             :wrapper-col="{ span: 12 }"
+            ref="formRef"
         >
             <a-form-item
                 v-for="item in config.columns" 
@@ -20,18 +20,21 @@
                 ></component> 
             </a-form-item>
             <a-form-item :wrapper-col="{ span: 14, offset: 6 }">
-                <a-button type="primary" @click="config.searchFn()" html-type="submit">提交</a-button>
+                <a-button type="primary" @click="onSubmit" html-type="submit">提交</a-button>
             </a-form-item>
         </a-form>
     </div>
 </template>
 <script setup lang="ts">
-import { markRaw} from 'vue'
+import { markRaw, ref} from 'vue'
 import { XiInput, XiTextarea, XiRadio, XiCheckbox, XiSelect, XiSwitch, XiAudio, XiInputNumber, XiSlider  } from './components/index.ts'
-defineProps<{
+const props = defineProps<{
   config: any
-  modelValue: any
+  modelValue: any,
+  rules: any
 }>()
+
+const formRef = ref();
 
 const componentsTypes = markRaw({
     input: XiInput,
@@ -44,6 +47,17 @@ const componentsTypes = markRaw({
     inputNumber: XiInputNumber,
     slider: XiSlider,
 })
+
+const onSubmit = () => {
+    formRef.value
+        .validate()
+        .then(() => {
+            props.config.searchFn()
+        })
+        .catch(error => {
+            console.log('error', error);
+        });
+};
 
 
 </script>
