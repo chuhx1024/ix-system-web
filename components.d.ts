@@ -24,6 +24,7 @@ declare module 'vue' {
     ASlider: typeof import('ant-design-vue/es')['Slider']
     ASpace: typeof import('ant-design-vue/es')['Space']
     ASwitch: typeof import('ant-design-vue/es')['Switch']
+    ATextarea: typeof import('ant-design-vue/es')['Textarea']
     copy: typeof import('./src/components/superFrom/index copy.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
@@ -47,7 +48,9 @@ declare module 'vue' {
     XInput: typeof import('./src/components/superFrom/components/xInput.vue')['default']
     XiRadio: typeof import('./src/components/superFrom/components/XiRadio.vue')['default']
     XiSelect: typeof import('./src/components/superFrom/components/XiSelect.vue')['default']
+    Xislider: typeof import('./src/components/superFrom/components/Xislider.vue')['default']
     XiSwitch: typeof import('./src/components/superFrom/components/XiSwitch.vue')['default']
+    XiTextarea: typeof import('./src/components/superFrom/components/XiTextarea.vue')['default']
     XRadio: typeof import('./src/components/superFrom/components/xRadio.vue')['default']
   }
 }
