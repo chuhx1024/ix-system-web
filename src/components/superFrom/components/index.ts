@@ -1,0 +1,7 @@
+export { default as XiInput } from './XiInput.vue'
+export { default as XiRadio } from './XiRadio.vue'
+export { default as XiCheckbox } from './XiCheckbox.vue'
+export { default as XiSelect } from './XiSelect.vue'
+export { default as XiSwitch } from './XiSwitch.vue'
+export { default as XiAudio } from './XiAudio.vue'
+export { default as XiInputNumber } from './XiInputNumber.vue'

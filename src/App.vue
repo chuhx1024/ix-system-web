@@ -25,9 +25,9 @@ const formData = ref({
     name5: '1',
     name6: true,
     name7: 5,
-    name8: 5,
-    name9: 5,
-    name10: 5,
+    name8: '',
+    // name9: 5,
+    // name10: 5,
 })
 
 const config = reactive( {
@@ -40,8 +40,8 @@ const config = reactive( {
         {type: 'switch', label: '输入框6', prop: 'name6'},
         {type: 'inputNumber', label: '输入框7', prop: 'name7', max: 12, min: 2},
         {type: 'audio', label: '输入框8', prop: 'name8'},
-        {type: 'slider', label: '输入框9', prop: 'name9'},
-        {type: 'rate', label: '输入框10', prop: 'name10'},
+        // {type: 'slider', label: '输入框9', prop: 'name9'},
+        // {type: 'rate', label: '输入框10', prop: 'name10'},
     ],
     searchFn: () => {
         console.log(formData.value)
